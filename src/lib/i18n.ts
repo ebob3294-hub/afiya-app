@@ -73,7 +73,7 @@ const ar = {
   ],
   gNote: "الطريقة الأولى كافية لمعظم المستخدمين ولا تحتاج أي ملفات إضافية.",
   gNote2: "ملاحظة: استخراج APK يتطلب أن يكون التطبيق منشوراً أولاً.",
-} as const;
+};
 
 const fr: typeof ar = {
   appName: "Afya",
@@ -122,7 +122,6 @@ const fr: typeof ar = {
   n_calories: "Calories",
   n_protein: "Protéines",
   n_potassium: "Potassium",
-  n_phosphore: "",
   n_phosphorus: "Phosphore",
   n_sodium: "Sodium",
   n_salt: "Sel",
