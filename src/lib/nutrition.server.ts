@@ -24,7 +24,7 @@ function toMg(v: unknown, unit: unknown): number | null {
 }
 
 export function mapProduct(p: OffProduct): FoodInfo | null {
-  const name = (p.product_name as string) || (p.product_name_fr as string) || (p.brands as string) || "";
+  const name = (p["product_name"] as string) || (p["product_name_fr"] as string) || (p["brands"] as string) || "";
   if (!name.trim()) return null;
   const nu = p.nutriments ?? {};
   const kJ = num(nu["energy_100g"]);
@@ -40,12 +40,12 @@ export function mapProduct(p: OffProduct): FoodInfo | null {
     potassium_mg: toMg(nu["potassium_100g"], nu["potassium_unit"]),
     phosphorus_mg: toMg(nu["phosphorus_100g"], nu["phosphorus_unit"]),
   };
-  const brandRaw = (p.brands as string) || "";
+  const brandRaw = (p["brands"] as string) || "";
   return {
     name: name.trim(),
-    nameFr: (p.product_name_fr as string) || null,
+    nameFr: (p["product_name_fr"] as string) || null,
     brand: brandRaw.split(",")[0]?.trim() || null,
-    image: (p.image_front_small_url as string) || null,
+    image: (p["image_front_small_url"] as string) || null,
     nutrients,
     notes: null,
     source: "barcode",
