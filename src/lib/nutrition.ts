@@ -45,10 +45,11 @@ export function levelFor(key: keyof FoodNutrients, v: number | null | undefined)
 }
 
 const SEVERITY: Level[] = ["info", "safe", "caution", "danger"];
+type Verdict = Exclude<Level, "info">;
 
-export function overallLevel(n: FoodNutrients): Level {
+export function overallLevel(n: FoodNutrients): Verdict {
   const keys: (keyof FoodNutrients)[] = ["potassium_mg", "phosphorus_mg", "sodium_mg", "salt_g"];
-  return keys.reduce<Level>((worst, k) => {
+  return keys.reduce<Verdict>((worst, k) => {
     const l = levelFor(k, n[k]);
     return SEVERITY.indexOf(l) > SEVERITY.indexOf(worst) ? l : worst;
   }, "safe");
