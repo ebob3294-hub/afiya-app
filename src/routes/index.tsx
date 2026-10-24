@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BookOpenText, Camera, Info, ScanLine, Search } from "lucide-react";
+import { Camera, Info, ScanLine, Search } from "lucide-react";
 import hero from "@/assets/hero.jpg";
 import { AppShell } from "@/components/AppShell";
 import { useLang } from "@/lib/lang";
@@ -70,18 +70,6 @@ function Index() {
             </Link>
           ))}
 
-          <Link
-            to="/guide"
-            className="flex items-center gap-4 rounded-3xl border border-dashed border-border bg-transparent p-4 transition-colors hover:bg-muted"
-          >
-            <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-accent text-accent-foreground">
-              <BookOpenText className="size-7" />
-            </span>
-            <span className="flex min-w-0 flex-col">
-              <span className="text-lg font-extrabold text-foreground">{t.guideTitle}</span>
-              <span className="text-sm text-muted-foreground">{t.guideDesc}</span>
-            </span>
-          </Link>
         </div>
 
         <div className="flex items-start gap-3 rounded-3xl border border-caution/20 bg-caution/5 p-4">
