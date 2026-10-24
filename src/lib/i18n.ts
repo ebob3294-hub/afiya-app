@@ -12,8 +12,6 @@ const ar = {
   scanDesc: "وجّه الكاميرا نحو الباركود",
   photoTitle: "تصوير المنتج",
   photoDesc: "صوّر الملصق وسيقرأه الذكاء الاصطناعي",
-  guideTitle: "دليل تثبيت التطبيق",
-  guideDesc: "كيفية تثبيته كتطبيق على أندرويد",
   disclaimer: "معلومات إرشادية فقط — استشر طبيبك أو أخصائي التغذية قبل أي قرار غذائي.",
   searchPlaceholder: "مثال: خبز، زيت، جبن…",
   searchBtn: "بحث",
@@ -54,25 +52,6 @@ const ar = {
   n_sugars: "سكر",
   n_fat: "دهون",
   n_fiber: "ألياف",
-  gIntro: "يمكنك استخدام عافية على هاتف أندرويد كأي تطبيق آخر، بطريقتين:",
-  gOpt1Title: "الطريقة 1: التثبيت المباشر (الأسهل)",
-  gOpt1Steps: [
-    "افتح التطبيق في متصفح Chrome على الهاتف.",
-    "اضغط على قائمة النقاط الثلاث (⋮) أعلى الشاشة.",
-    "اختر «إضافة إلى الشاشة الرئيسية» (Add to Home screen).",
-    "ستظهر أيقونة التطبيق في شاشتك الرئيسية كأي تطبيق آخر.",
-  ],
-  gOpt2Title: "الطريقة 2: استخراج ملف APK",
-  gOpt2Steps: [
-    "بعد نشر التطبيق، انسخ رابطه النهائي.",
-    "ادخل إلى موقع pwabuilder.com من الحاسوب.",
-    "الصق الرابط واضغط Start.",
-    "اختر Android ثم Package.",
-    "حمّل ملف APK الناتج.",
-    "على الهاتف: فعّل «التثبيت من مصادر غير معروفة» في الإعدادات، ثم ثبّت الملف.",
-  ],
-  gNote: "الطريقة الأولى كافية لمعظم المستخدمين ولا تحتاج أي ملفات إضافية.",
-  gNote2: "ملاحظة: استخراج APK يتطلب أن يكون التطبيق منشوراً أولاً.",
 };
 
 const fr: typeof ar = {
@@ -87,8 +66,6 @@ const fr: typeof ar = {
   scanDesc: "Visez le code-barres avec la caméra",
   photoTitle: "Photographier le produit",
   photoDesc: "L'IA lit l'étiquette pour vous",
-  guideTitle: "Guide d'installation",
-  guideDesc: "Installer l'app sur Android",
   disclaimer: "Informations indicatives — consultez votre médecin ou diététicien avant toute décision alimentaire.",
   searchPlaceholder: "ex. : pain, huile, fromage…",
   searchBtn: "Rechercher",
@@ -129,25 +106,6 @@ const fr: typeof ar = {
   n_sugars: "Sucres",
   n_fat: "Lipides",
   n_fiber: "Fibres",
-  gIntro: "Utilisez Afya sur votre téléphone Android comme une vraie application, de deux façons :",
-  gOpt1Title: "Méthode 1 : installation directe (le plus simple)",
-  gOpt1Steps: [
-    "Ouvrez l'application dans Chrome sur le téléphone.",
-    "Touchez le menu ⋮ en haut de l'écran.",
-    "Choisissez « Ajouter à l'écran d'accueil ».",
-    "L'icône de l'application apparaît sur votre écran d'accueil.",
-  ],
-  gOpt2Title: "Méthode 2 : générer un fichier APK",
-  gOpt2Steps: [
-    "Après la publication, copiez le lien final de l'application.",
-    "Ouvrez pwabuilder.com sur ordinateur.",
-    "Collez le lien et cliquez sur Start.",
-    "Choisissez Android puis Package.",
-    "Téléchargez le fichier APK généré.",
-    "Sur le téléphone : activez « Installer des applications inconnues », puis installez le fichier.",
-  ],
-  gNote: "La méthode 1 suffit pour la plupart des utilisateurs, sans fichier supplémentaire.",
-  gNote2: "Remarque : générer un APK nécessite que l'application soit publiée d'abord.",
 };
 
 export const dict: Record<Lang, typeof ar> = { ar, fr };

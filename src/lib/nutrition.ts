@@ -51,6 +51,7 @@ export function overallLevel(n: FoodNutrients): Verdict {
   const keys: (keyof FoodNutrients)[] = ["potassium_mg", "phosphorus_mg", "sodium_mg", "salt_g"];
   return keys.reduce<Verdict>((worst, k) => {
     const l = levelFor(k, n[k]);
+    if (l === "info") return worst;
     return SEVERITY.indexOf(l) > SEVERITY.indexOf(worst) ? l : worst;
   }, "safe");
 }
