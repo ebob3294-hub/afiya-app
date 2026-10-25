@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FoodsRouteImport } from './routes/foods'
 import { Route as PhotoRouteImport } from './routes/photo'
 import { Route as ScanRouteImport } from './routes/scan'
 import { Route as SearchRouteImport } from './routes/search'
@@ -17,6 +18,11 @@ import { Route as SearchRouteImport } from './routes/search'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoodsRoute = FoodsRouteImport.update({
+  id: '/foods',
+  path: '/foods',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PhotoRoute = PhotoRouteImport.update({
@@ -37,12 +43,14 @@ const SearchRoute = SearchRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/foods': typeof FoodsRoute
   '/photo': typeof PhotoRoute
   '/scan': typeof ScanRoute
   '/search': typeof SearchRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/foods': typeof FoodsRoute
   '/photo': typeof PhotoRoute
   '/scan': typeof ScanRoute
   '/search': typeof SearchRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/foods': typeof FoodsRoute
   '/photo': typeof PhotoRoute
   '/scan': typeof ScanRoute
   '/search': typeof SearchRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/photo' | '/scan' | '/search'
+  fullPaths: '/' | '/foods' | '/photo' | '/scan' | '/search'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/photo' | '/scan' | '/search'
-  id: '__root__' | '/' | '/photo' | '/scan' | '/search'
+  to: '/' | '/foods' | '/photo' | '/scan' | '/search'
+  id: '__root__' | '/' | '/foods' | '/photo' | '/scan' | '/search'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FoodsRoute: typeof FoodsRoute
   PhotoRoute: typeof PhotoRoute
   ScanRoute: typeof ScanRoute
   SearchRoute: typeof SearchRoute
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/foods': {
+      id: '/foods'
+      path: '/foods'
+      fullPath: '/foods'
+      preLoaderRoute: typeof FoodsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/photo': {
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FoodsRoute: FoodsRoute,
   PhotoRoute: PhotoRoute,
   ScanRoute: ScanRoute,
   SearchRoute: SearchRoute,
