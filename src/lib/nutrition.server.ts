@@ -39,6 +39,7 @@ export function mapProduct(p: OffProduct): FoodInfo | null {
     sodium_mg: toMg(nu["sodium_100g"], nu["sodium_unit"]),
     potassium_mg: toMg(nu["potassium_100g"], nu["potassium_unit"]),
     phosphorus_mg: toMg(nu["phosphorus_100g"], nu["phosphorus_unit"]),
+    magnesium_mg: toMg(nu["magnesium_100g"], nu["magnesium_unit"]),
   };
   const brandRaw = (p["brands"] as string) || "";
   return {
@@ -108,6 +109,7 @@ const AiLabelSchema = z.object({
       sodium_mg: z.coerce.number().nullable().optional(),
       potassium_mg: z.coerce.number().nullable().optional(),
       phosphorus_mg: z.coerce.number().nullable().optional(),
+      magnesium_mg: z.coerce.number().nullable().optional(),
     })
     .nullable()
     .optional(),
@@ -119,7 +121,7 @@ const AiLabelSchema = z.object({
 
 const SYSTEM_PROMPT = `You read photos of food packaging nutrition labels for people with chronic kidney disease (CKD), dialysis patients and diabetics.
 Reply ONLY with minified JSON — no markdown fences, no explanation.
-Schema: {"found":boolean,"product_name":string|null,"product_name_fr":string|null,"per_100g":{"calories":number|null,"protein_g":number|null,"carbs_g":number|null,"sugars_g":number|null,"fat_g":number|null,"fiber_g":number|null,"salt_g":number|null,"sodium_mg":number|null,"potassium_mg":number|null,"phosphorus_mg":number|null},"notes":{"ar":string,"fr":string}}
+Schema: {"found":boolean,"product_name":string|null,"product_name_fr":string|null,"per_100g":{"calories":number|null,"protein_g":number|null,"carbs_g":number|null,"sugars_g":number|null,"fat_g":number|null,"fiber_g":number|null,"salt_g":number|null,"sodium_mg":number|null,"potassium_mg":number|null,"phosphorus_mg":number|null,"magnesium_mg":number|null},"notes":{"ar":string,"fr":string}}
 Values must be per 100 g or per 100 ml. Convert units yourself: kJ to kcal (divide by 4.184), grams of minerals to mg (multiply by 1000). Use null when a value is not on the label.
 If the image contains no nutrition information at all, set found=false and leave everything else null.
 notes: 1-2 short, simple sentences of advice about potassium/phosphorus/sodium/sugar for a kidney or diabetic patient — in Arabic ("ar") and French ("fr").`;
@@ -161,6 +163,7 @@ export async function analyzeLabelImage(
       sodium_mg: p.sodium_mg ?? null,
       potassium_mg: p.potassium_mg ?? null,
       phosphorus_mg: p.phosphorus_mg ?? null,
+      magnesium_mg: p.magnesium_mg ?? null,
     };
     const food: FoodInfo = {
       name: d.product_name?.trim() || "",

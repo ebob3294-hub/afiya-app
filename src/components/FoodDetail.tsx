@@ -7,6 +7,7 @@ const ROWS: { key: keyof FoodNutrients; unit: "kcal" | "g" | "mg"; labelKey: str
   { key: "calories", unit: "kcal", labelKey: "n_calories" },
   { key: "potassium_mg", unit: "mg", labelKey: "n_potassium" },
   { key: "phosphorus_mg", unit: "mg", labelKey: "n_phosphorus" },
+  { key: "magnesium_mg", unit: "mg", labelKey: "n_magnesium" },
   { key: "protein_g", unit: "g", labelKey: "n_protein", showProteinNote: true },
   { key: "sodium_mg", unit: "mg", labelKey: "n_sodium" },
   { key: "salt_g", unit: "g", labelKey: "n_salt" },
@@ -43,7 +44,7 @@ export function FoodDetail({ food }: { food: FoodInfo }) {
         <h2 className="text-xl font-extrabold text-foreground">{name}</h2>
         {food.brand ? <p className="mt-1 text-sm text-muted-foreground">{food.brand}</p> : null}
         <p className="mt-2 text-xs text-muted-foreground">
-          {food.source === "ai" ? t.sourceAi : t.sourceBarcode} · {t.per100g}
+          {food.source === "ai" ? t.sourceAi : food.source === "builtin" ? t.sourceBuiltin : t.sourceBarcode} · {t.per100g}
         </p>
       </div>
 

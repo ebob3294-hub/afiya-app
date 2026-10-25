@@ -11,6 +11,7 @@ export interface FoodNutrients {
   sodium_mg: number | null;
   potassium_mg: number | null;
   phosphorus_mg: number | null;
+  magnesium_mg: number | null;
 }
 
 export interface FoodInfo {
@@ -20,7 +21,7 @@ export interface FoodInfo {
   image?: string | null;
   nutrients: FoodNutrients;
   notes?: { ar: string; fr: string } | null;
-  source?: "barcode" | "ai";
+  source?: "barcode" | "ai" | "builtin";
 }
 
 /*

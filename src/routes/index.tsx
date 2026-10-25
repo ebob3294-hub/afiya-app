@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Camera, Info, ScanLine, Search } from "lucide-react";
+import { Apple, Camera, Info, ScanLine, Search } from "lucide-react";
 import hero from "@/assets/hero.jpg";
 import { AppShell } from "@/components/AppShell";
 import { useLang } from "@/lib/lang";
@@ -28,6 +28,7 @@ export const Route = createFileRoute("/")({
 });
 
 const ACTIONS = [
+  { to: "/foods", icon: Apple, titleKey: "foodsTitle", descKey: "foodsDesc" },
   { to: "/search", icon: Search, titleKey: "searchTitle", descKey: "searchDesc" },
   { to: "/scan", icon: ScanLine, titleKey: "scanTitle", descKey: "scanDesc" },
   { to: "/photo", icon: Camera, titleKey: "photoTitle", descKey: "photoDesc" },
