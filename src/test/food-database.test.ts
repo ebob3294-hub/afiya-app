@@ -28,13 +28,19 @@ describe("food database", () => {
     }
   });
 
-  it("marks low-potassium staples (rice, couscous, apple, water) as safe overall", () => {
-    const ids = ["grain-rice", "grain-couscous", "fruit-apple", "drink-water"];
+  it("marks low-potassium staples (rice, couscous, water) as safe overall", () => {
+    const ids = ["grain-rice", "grain-couscous", "drink-water"];
     for (const id of ids) {
       const f = FOOD_DB.find((x) => x.id === id);
       expect(f).toBeDefined();
       expect(overallLevel(f!.nutrients)).toBe("safe");
     }
+  });
+
+  it("places apple just over the potassium caution threshold", () => {
+    const apple = FOOD_DB.find((x) => x.id === "fruit-apple")!;
+    expect(apple.nutrients.potassium_mg).toBe(107);
+    expect(levelFor("potassium_mg", apple.nutrients.potassium_mg)).toBe("caution");
   });
 
   it("converts a db food to FoodInfo with builtin source", () => {
