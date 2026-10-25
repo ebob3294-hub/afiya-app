@@ -47,6 +47,7 @@ describe("kidney nutrient traffic-light thresholds", () => {
         sodium_mg: 40,
         potassium_mg: 50,
         phosphorus_mg: 30,
+        magnesium_mg: 10,
       }),
     ).toBe("safe");
 
@@ -62,6 +63,7 @@ describe("kidney nutrient traffic-light thresholds", () => {
         sodium_mg: 40,
         potassium_mg: 300,
         phosphorus_mg: 30,
+        magnesium_mg: 10,
       }),
     ).toBe("danger");
   });
